@@ -10,7 +10,7 @@ Aimed to be as simple as possible so that people can set it up and modify on the
 
 Talk to chatGPT and get a response. ConversationID and parentID are optional parameters that allow you to continue a conversation if you'd like.
 
-(In action gif)
+![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
 
 
 ## Setup
