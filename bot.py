@@ -3,7 +3,6 @@ import typing, asyncio, functools
 from discord import app_commands
 from revChatGPT.ChatGPT import Chatbot
 
-
 if not os.path.exists("config.json"):
 	with open("config.json", "w+") as f:
 		json.dump({}, f, indent=4)
@@ -30,7 +29,6 @@ def to_thread(func: typing.Callable) -> typing.Coroutine:
 def get_response(message, conversationid, parentid):
     response = chatbot.ask(message, conversation_id=conversationid, parent_id=parentid)
     return response
-
 
 class aclient(discord.Client):
 	def __init__(self):
@@ -74,4 +72,13 @@ async def chat(interaction: discord.Interaction, message: str, conversationid: s
         print(e)
         await interaction.followup.send("Something went wrong, please try again! \nIf the problem persists, let me know on Github: https://github.com/JasonInd/chatGPT-DiscordBot/issues")
 
+@client.slash_command(name="refresh", description="Refresh the chatGPT session token")
+async def refresh(interaction: discord.Interaction):
+	try:
+		chatbot.refresh_session()
+		print("Session refreshed.")
+		await interaction.response.send_message("Session token refreshed",ephemeral=True)
+	except Exception as e:
+		await interaction.response.send_message("An error has occured please try again",ephemeral=True)
+		
 client.run(DISCORD_TOKEN)
