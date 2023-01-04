@@ -48,12 +48,14 @@ class aclient(discord.Client):
 client = aclient()
 
 @client.tree.command(name="chat",description="Talk to chatGPT")
-@app_commands.describe(message = "The message you want to say to chatGPT", conversationid = "Conversation ID to continue a previous conversation", 
-parentid = "ID of the original message")
-async def chat(interaction: discord.Interaction, message: str, conversationid: str = None, parentid: str = None):
+@app_commands.describe(message = "The message you want to say to chatGPT", conversationid = "Conversation ID to continue a previous conversation (specify a parentid as well)", 
+parentid = "ID of the original message (specify a conversationid as well)", new_conversation = "Lets you start a new conversation thread")
+async def chat(interaction: discord.Interaction, message: str, conversationid: str = None, parentid: str = None, new_conversation: bool = False):
     await interaction.response.defer()
 
     try:
+        if new_conversation == True:
+            chatbot.reset_chat()
         response = await get_response(message, conversationid, parentid)
         if len(response['message']) > 3800:
             split_message1 = response['message'][:3800]
@@ -72,7 +74,7 @@ async def chat(interaction: discord.Interaction, message: str, conversationid: s
         print(e)
         await interaction.followup.send("Something went wrong, please try again! \nIf the problem persists, let me know on Github: https://github.com/JasonInd/chatGPT-DiscordBot/issues")
 
-@client.slash_command(name="refresh", description="Refresh the chatGPT session token")
+@client.tree.command(name="refresh", description="Refresh the chatGPT session token")
 async def refresh(interaction: discord.Interaction):
 	try:
 		chatbot.refresh_session()
