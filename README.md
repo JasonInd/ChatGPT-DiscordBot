@@ -6,9 +6,9 @@ Aimed to be as simple as possible so that people can set it up and modify on the
 
 ## Features
 
-`/chat (message) [conversationID (optional)] [parentID (optional)]`
+`/chat (message) [conversationID (optional)] [parentID (optional)] [new_conversation (true/false optional)]`
 
-Talk to chatGPT and get a response. ConversationID and parentID are optional parameters that allow you to continue a conversation if you'd like.
+Talk to chatGPT and get a response. ConversationID and parentID are optional parameters that allow you to continue a previous conversation if you'd like, keep in mind you must have both to continue a previous conversation. New conversation can be allowed via setting the new_conversation option to True
 
 `/refresh` - Refresh your session token
 
