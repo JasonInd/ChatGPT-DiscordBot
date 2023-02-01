@@ -3,6 +3,7 @@
 An up to date Discord Bot that generates replies using ChatGPT official API. 
 Aimed to be as simple as possible so that people can set it up and modify on their own with ease.
 
+It is currently completely free - that is you will still be able to generate replies regardless of how many tokens you have. This will most likely be fixed on full release of the official API.
 
 ## Features
 
