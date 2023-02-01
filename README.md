@@ -6,14 +6,18 @@ Aimed to be as simple as possible so that people can set it up and modify on the
 
 ## Features
 
+`/chat (message) [new_conversation (optional)]` Talke to chatGPT and get a response, set new_conversation to true if you want to start a new conversation.
+
+`/rollback (amount)` - Go back a select amount of messages from your conversation
+
+![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
+
+### Only in Versions below 0.0.4
 `/chat (message) [conversationID (optional)] [parentID (optional)] [new_conversation (optional)]`
 
 Talk to chatGPT and get a response. ConversationID and parentID are optional parameters that allow you to continue a previous conversation if you'd like, keep in mind you must have both to continue a previous conversation. New conversations can be started via setting the new_conversation option to True
 
 `/refresh` - Refresh your session token
-
-![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
-
 
 ## Setup
 
@@ -21,7 +25,12 @@ Talk to chatGPT and get a response. ConversationID and parentID are optional par
 
 `pip install -r requirements.txt`
 
-### Getting session token
+### Getting OpenAI API key
+1. Create account on OpenAI
+2. Go to https://platform.openai.com/account/api-keys
+3. Copy API key
+
+### Getting session token (Only required for versions below 0.0.4)
 
 You can get your session token manually from your browser:
 
