@@ -1,6 +1,6 @@
-# chatGPT-DiscordBot
+# ChatGPT-DiscordBot
 
-An up to date Discord Bot that generates replies using chatGPT. 
+An up to date Discord Bot that generates replies using ChatGPT official API. 
 Aimed to be as simple as possible so that people can set it up and modify on their own with ease.
 
 
@@ -12,7 +12,7 @@ Aimed to be as simple as possible so that people can set it up and modify on the
 
 ![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
 
-### Only in Versions below 0.0.4
+### Only in Versions 0.0.4 and below
 `/chat (message) [conversationID (optional)] [parentID (optional)] [new_conversation (optional)]`
 
 Talk to chatGPT and get a response. ConversationID and parentID are optional parameters that allow you to continue a previous conversation if you'd like, keep in mind you must have both to continue a previous conversation. New conversations can be started via setting the new_conversation option to True
@@ -30,7 +30,7 @@ Talk to chatGPT and get a response. ConversationID and parentID are optional par
 2. Go to https://platform.openai.com/account/api-keys
 3. Copy API key
 
-### Getting session token (Only required for versions below 0.0.4)
+### Getting session token (Only required for Versions 0.0.4 and below)
 
 You can get your session token manually from your browser:
 
