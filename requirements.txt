@@ -16,7 +16,7 @@ openai==0.26.4
 pycryptodomex==3.17
 regex==2022.10.31
 requests==2.28.2
-revChatGPT==1.1.2
+revChatGPT==1.1.5
 tiktoken==0.1.2
 tqdm==4.64.1
 urllib3==1.26.14
