@@ -7,7 +7,7 @@ It is currently completely free - that is you will still be able to generate rep
 
 ## Features
 
-`/chat (message) [new_conversation (optional)]` Talke to chatGPT and get a response, set new_conversation to true if you want to start a new conversation.
+`/chat (message) [conversationID (optional)] [new_conversation (optional)]` Talke to chatGPT and get a response, set new_conversation to true if you want to start a new conversation. You can also specify a previous conversation ID to continue a previous conversation.
 
 `/rollback (amount)` - Go back a select amount of messages from your conversation
 
