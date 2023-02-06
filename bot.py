@@ -4,12 +4,12 @@ from discord import app_commands
 from revChatGPT.Official import AsyncChatbot
 
 if not os.path.exists("config.json"):
-	with open("config.json", "w+") as f:
-		json.dump({}, f, indent=4)
+    with open("config.json", "w+") as f:
+        json.dump({}, f, indent=4)
 
 def load_config():
-	with open("config.json", "r") as f:
-		return json.load(f)
+    with open("config.json", "r") as f:
+        return json.load(f)
 
 config = load_config()
 DISCORD_TOKEN = config['discord_bot_token']
@@ -19,31 +19,31 @@ chatbot = AsyncChatbot(api_key=OPEN_AI_KEY)
 
 
 class aclient(discord.Client):
-	def __init__(self):
-		intents = discord.Intents.all()
-		super().__init__(command_prefix="!",intents=intents,help_command=None)
-		self.tree = app_commands.CommandTree(self)
-		self.synced = False
+    def __init__(self):
+        intents = discord.Intents.all()
+        super().__init__(command_prefix="!",intents=intents,help_command=None)
+        self.tree = app_commands.CommandTree(self)
+        self.synced = False
 
-	async def setup_hook(self):
-		await self.tree.sync()
-		self.synced = True
-		print(f"Synced Slash commands for {self.user}")
+    async def setup_hook(self):
+        await self.tree.sync()
+        self.synced = True
+        print(f"Synced Slash commands for {self.user}")
 
-	async def on_ready(self):
-		print(f"Logged in as {self.user}")
+    async def on_ready(self):
+        print(f"Logged in as {self.user}")
 
 client = aclient()
 
 @client.tree.command(name="chat",description="Talk to chatGPT")
-@app_commands.describe(message = "The message you want to say to chatGPT", new_conversation = "Lets you start a new conversation thread")
-async def chat(interaction: discord.Interaction, message: str, new_conversation: bool = False):
+@app_commands.describe(message = "The message you want to say to chatGPT", conversation_id = "Specify a previous conversation ID",new_conversation = "Lets you start a new conversation thread")
+async def chat(interaction: discord.Interaction, message: str, conversation_id: str = None, new_conversation: bool = False):
     await interaction.response.defer()
 
     try:
         if new_conversation == True:
             chatbot.reset()
-        response = await chatbot.ask(message)
+        response = await chatbot.ask(message, conversation_id)
 
         if len(response['choices'][0]['text']) > 3800:
             split_message1 = response['choices'][0]['text'][:3800]
@@ -64,11 +64,11 @@ async def chat(interaction: discord.Interaction, message: str, new_conversation:
 
 @client.tree.command(name="rollback", description="Go back a specified number of messages")
 async def refresh(interaction: discord.Interaction, amount:int):
-	try:
-		chatbot.rollback(amount)
-		print(f"Rolled back chat history by {amount} messages")
-		await interaction.response.send_message(f"Rolled back chat history by {amount} messages",ephemeral=True)
-	except Exception as e:
-		await interaction.response.send_message("An error has occured please try again",ephemeral=True)
-		
+    try:
+        chatbot.rollback(amount)
+        #print(f"Rolled back chat history by {amount} messages")
+        await interaction.response.send_message(f"Rolled back chat history by {amount} messages",ephemeral=True)
+    except Exception as e:
+        await interaction.response.send_message("An error has occured please try again",ephemeral=True)
+
 client.run(DISCORD_TOKEN)
