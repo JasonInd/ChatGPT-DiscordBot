@@ -12,7 +12,6 @@ def load_config():
 
 config = load_config()
 DISCORD_TOKEN = config['discord_bot_token']
-OPEN_AI_KEY = config['open_ai_key']
 
 chatbot = Chatbot()
 
