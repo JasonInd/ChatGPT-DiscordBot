@@ -75,34 +75,5 @@ async def refresh(interaction: discord.Interaction, amount:int, conversation_id:
     except Exception as e:
         await interaction.response.send_message("An error has occured please try again\nIf the problem persists, let me know on Github: https://github.com/JasonInd/chatGPT-DiscordBot/issues",ephemeral=True)
 
-client.run(DISCORD_TOKEN)
-
-
-@client.tree.command(name="chat",description="Talk to chatGPT")
-@app_commands.describe(message = "The message you want to say to chatGPT", new_conversation = "Lets you start a new conversation thread")
-async def chat(interaction: discord.Interaction, message: str, new_conversation: bool = False):
-	await interaction.response.defer()
-
-	try:
-		if new_conversation == True:
-			await chatbot.reset()
-		response = await chatbot.ask(message)
-
-		if len(response['item']['messages'][1]['adaptiveCards'][0]['body'][0]['text']) > 3800:
-			split_message1 = response['item']['messages'][1]['adaptiveCards'][0]['body'][0]['text'][:3800]
-			split_message2 = response['item']['messages'][1]['adaptiveCards'][0]['body'][0]['text'][3800:].strip()
-			embed1 = discord.Embed(description = f"`{message}`\n{split_message1}")
-			embed1.set_footer(text="Made by github/JasonInd")
-			embed2 = discord.Embed(description = f"`{message} continued...`\n{split_message2}")
-			embed2.set_footer(text="Made by github/JasonInd")
-			await interaction.followup.send(embeds=[embed1,embed2])
-
-		else:
-			embed = discord.Embed(description = f"`{message}`\n{response['item']['messages'][1]['adaptiveCards'][0]['body'][0]['text']}")
-			embed.set_footer(text="Made by github/JasonInd")
-			await interaction.followup.send(embed=embed)
-	except Exception as e:
-		print(e)
-		await interaction.followup.send("Something went wrong, please try again! \nIf the problem persists, let me know on Github: https://github.com/JasonInd/chatGPT-DiscordBot/issues")
 
 client.run(DISCORD_TOKEN)
