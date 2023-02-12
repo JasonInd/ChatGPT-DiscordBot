@@ -4,7 +4,7 @@ An up to date Discord Bot that generates replies using ChatGPT official API. Bot
 Aimed to be as simple as possible so that people can set it up and modify on their own with ease.
 
 > **Warning**
-> #### 2023-02-12 Update: Uploaded versions for multiple options for everyone! Recommend using bot.py and bot2.py but please let me know if you have any issues!
+> #### 2023-02-12 Update: Uploaded versions for multiple options for everyone! I Recommend using bot.py or bot2.py but please let me know if you have any issues!
 > #### 2023-02-10 Update: Currently switched to EdgeGPT, doesn't require OpenAI API key and is free but may be buggy as it is in beta.
 > #### 2023-02-09 Update: ChatGPT is unstable, lots of server overload and problems right now. 
 
