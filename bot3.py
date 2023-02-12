@@ -76,15 +76,6 @@ async def chat(interaction: discord.Interaction, message: str, conversationid: s
         print(e)
         await interaction.followup.send("Something went wrong, please try again! \nIf the problem persists, let me know on Github: https://github.com/JasonInd/chatGPT-DiscordBot/issues")
 
-@client.tree.command(name="refresh", description="Refresh the chatGPT session token")
-async def refresh(interaction: discord.Interaction):
-	try:
-		chatbot.refresh_session()
-		print("Session refreshed.")
-		await interaction.response.send_message("Session token refreshed",ephemeral=True)
-	except Exception as e:
-		await interaction.response.send_message("An error has occured please try again",ephemeral=True)
-
 @client.tree.command(name="rollback", description="Rollback a conversation by 1 message")
 async def refresh(interaction: discord.Interaction):
 	try:
