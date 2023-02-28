@@ -13,7 +13,9 @@ def load_config():
 config = load_config()
 DISCORD_TOKEN = config['discord_bot_token']
 
-chatbot = Chatbot()
+with open('./cookie.json', 'r') as f:
+    cookies = json.load(f)
+bot = Chatbot(cookies=cookies)
 
 class aclient(discord.Client):
 	def __init__(self):
