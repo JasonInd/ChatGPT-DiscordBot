@@ -1,7 +1,6 @@
 import discord, os, json, aiohttp
-import typing, asyncio, functools
 from discord import app_commands
-from revChatGPT.V1 import Chatbot
+from revChatGPT.V1 import AsyncChatbot
 
 if not os.path.exists("config.json"):
 	with open("config.json", "w+") as f:
@@ -16,21 +15,14 @@ DISCORD_TOKEN = config['discord_bot_token']
 OPEN_AI_EMAIL = config['open_ai_email']
 OPEN_AI_PASS = config['open_ai_pass']
 
-chatbot = Chatbot({
+chatbot = AsyncChatbot({
   "email": OPEN_AI_EMAIL,
   "password": OPEN_AI_PASS
 })
 
-def to_thread(func: typing.Callable) -> typing.Coroutine:
-	@functools.wraps(func)
-	async def wrapper(*args, **kwargs):
-		return await asyncio.to_thread(func, *args, **kwargs)
-	return wrapper
 
-@to_thread
-def get_response(message, conversationid, parentid):
-	response = None
-	for data in chatbot.ask(message, conversation_id=conversationid, parent_id=parentid):
+async def get_response(message, conversationid, parentid):
+	async for data in chatbot.ask(message, conversation_id=conversationid, parent_id=parentid):
 		response = data
 	return response
 
@@ -60,7 +52,8 @@ async def chat(interaction: discord.Interaction, message: str, conversationid: s
 	try:
 		if new_conversation == True:
 			chatbot.reset_chat()
-		response= await get_response(message, conversationid, parentid)
+		
+		response = await get_response(message, conversationid, parentid)
 
 		if len(response['message']) > 3800:
 			split_message1 = response['message'][:3800]
