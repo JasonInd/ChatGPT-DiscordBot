@@ -3,9 +3,11 @@
 An up to date Discord Bot that generates replies using ChatGPT official API. Both browser and browserless options available as well as using the the new Microsoft Edge/Bing GPT which is ChatGPT with internet access!
 Aimed to be as simple as possible so that people can set it up and modify on their own with ease.
 
-Bot.py uses the official OpenAI API I highly recommend you using this one, it does however cost money (uses your tokens).
-Bot2.py uses unofficial API and you risk having your account being banned, I take no responsibility for what happens to your account if you use this bot.
-Bot3.py EdgeGPT requires an account with access to Sydney to use.
+`bot.py` uses the official OpenAI API I highly recommend you using this one, it does however cost money (uses your tokens).
+
+`bot2.py` uses unofficial API and you risk having your account being banned, I take no responsibility for what happens to your account if you use this bot.
+
+`bot3.py` EdgeGPT requires an account with access to Sydney to use.
 
 ## Features
 ![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
