@@ -3,16 +3,20 @@
 An up to date Discord Bot that generates replies using ChatGPT official API. Both browser and browserless options available as well as using the the new Microsoft Edge/Bing GPT which is ChatGPT with internet access!
 Aimed to be as simple as possible so that people can set it up and modify on their own with ease.
 
-> **Warning**
-> #### 2023-02-14 Update: Only versions for V1 chatGPT - works well so far I recommend using bot.py. EdgeGPT requires beta access account to work. Removed browser required bot.
-> #### 2023-02-09 Update: ChatGPT is unstable, lots of server overload and problems right now. 
-
-All versions are currently completely free - that is you will still be able to generate replies regardless of how many tokens you have. This will most likely be fixed on full release of the official API.
+Bot.py uses the official OpenAI API I highly recommend you using this one, it does however cost money (uses your tokens).
+Bot2.py uses unofficial API and you risk having your account being banned, I take no responsibility for what happens to your account if you use this bot.
+Bot3.py EdgeGPT requires an account with access to Sydney to use.
 
 ## Features
 ![HoggyGPT GIF](https://user-images.githubusercontent.com/72218862/210123549-83357527-0dc9-49a8-bb79-93a6f596850f.gif)
 
-### ChatGPT browserless - `bot.py`
+### ChatGPT Official API - `bot.py`
+
+`/chat (message) [temperature (optional)]` - Talk to chatGPT and get a response. You can adjust the temperature from 0-1 which controls how random the output is, by default it is 0.75
+
+`/rollback [amount]` - Go back a set amount of conversation steps in your message history
+
+### ChatGPT Browserless - `bot2.py`
 
 `/chat (message) [conversationID (optional)] [parentID (optional)] [new_conversation (optional)]`
 
@@ -22,9 +26,9 @@ Talk to chatGPT and get a response. ConversationID and parentID are optional par
 
 `/delete-conversation [conversationID] [delete_all (optional)]` - Delete a conversation, set delete_all to true to delete all conversations
 
-### EdgeGPT browserless - `bot2.py`
+### EdgeGPT Browserless - `bot3.py`
 
-`/chat (message) [new_conversation (optional)]` Talk to edgeGPT and get a response that has internet access - you will get references from where the answer gets the information. Set new_conversation to true if you want to start a new conversation. 
+`/chat (message) [new_conversation (optional)]` Talk to EdgeGPT and get a response that has internet access - you will get references from where the answer gets the information. Set new_conversation to true if you want to start a new conversation. 
 
 ## Setup
 
