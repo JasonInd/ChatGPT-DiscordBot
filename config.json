@@ -1,5 +1,6 @@
 {
     "discord_bot_token":"",
     "open_ai_email":"",
-    "open_ai_pass:""
+    "open_ai_pass:"",
+    "open_ai_key:""
 }
