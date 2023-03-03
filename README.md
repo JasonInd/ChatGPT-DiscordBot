@@ -14,7 +14,7 @@ Aimed to be as simple as possible so that people can set it up and modify on the
 
 ### ChatGPT Official API - `bot.py`
 
-`/chat (message) [temperature (optional)]` - Talk to chatGPT and get a response. You can adjust the temperature from 0-1 which controls how random the output is, by default it is 0.75
+`/chat (message) [new_conversation (optional)] [temperature (optional)]` - Talk to chatGPT and get a response. You can adjust the temperature from 0-1 which controls how random the output is, by default it is 0.75. New conversations can be started via setting the new_conversation option to True
 
 `/rollback [amount]` - Go back a set amount of conversation steps in your message history
 
