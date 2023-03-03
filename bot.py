@@ -48,10 +48,12 @@ client = aclient()
 
 @client.tree.command(name="chat",description="Talk to chatGPT")
 @app_commands.describe(message = "The message you want to say to chatGPT", temperature = "Set temperature from 0-1, 1 is highest (Controls how random output is)")
-async def chat(interaction: discord.Interaction, message: str, temperature: float = 0.5):
+async def chat(interaction: discord.Interaction, message: str, new_conversation: bool = False, temperature: float = 0.75):
 	await interaction.response.defer()
 
-	try:		
+	try:
+		if new_conversation == True:
+			chatbot.reset()					
 		response = await get_response(message, temperature)
 
 		if len(response) > 3800:
